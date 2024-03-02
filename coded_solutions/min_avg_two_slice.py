@@ -24,14 +24,15 @@ def solution(A: list[int]) -> int:
     min_avg_pos = 0  # Initialize the starting position for the minimum
     # average.
 
-    for index in range(0, len(A) - 2):
+    for index in range(0, len(A) - 2): # Checking for slices of at least 2
         # Check the average of the slice of length 2
         avg_2 = (A[index] + A[index + 1]) / 2.0
         if avg_2 < min_avg_value:
             min_avg_value = avg_2
             min_avg_pos = index
 
-        # Check the average of the slice of length 3
+        # Mathematically, 2 and 3 are the most probably since larger slices
+        # can be broken into smaller slices.
         avg_3 = (A[index] + A[index + 1] + A[index + 2]) / 3.0
         if avg_3 < min_avg_value:
             min_avg_value = avg_3
