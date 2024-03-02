@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from coded_solutions.max_non_overlapping_segments import solution
+from coded_solutions.greedyAlgorithms.max_non_overlapping_segments import solution
 
 
 class TestMaxNonOverlappingSegments(TestCase):

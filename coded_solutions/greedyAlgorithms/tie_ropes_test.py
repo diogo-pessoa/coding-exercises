@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from coded_solutions.tie_ropes import solution
+from coded_solutions.greedyAlgorithms.tie_ropes import solution
 
 
 class TestTieRopes(TestCase):

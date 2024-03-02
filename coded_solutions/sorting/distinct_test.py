@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from coded_solutions.distinct import solution
+from coded_solutions.sorting.distinct import solution
 
 
 class TestDistinct(TestCase):

@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from coded_solutions.triangle import solution
+from coded_solutions.sorting.triangle import solution
 
 class TestTriangle(TestCase):
     def test_solution(self):

@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from coded_solutions.number_solitarie import solution_ns
+from coded_solutions.dynamicProgramming.number_solitarie import solution_ns
 
 
 class TestNumberSolitarie(TestCase):

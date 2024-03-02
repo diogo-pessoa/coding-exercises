@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from coded_solutions.min_bas_sum import solution_1
+from coded_solutions.dynamicProgramming.min_abs_sum import solution_1
 
 
 class TestMinAbsSum(TestCase):

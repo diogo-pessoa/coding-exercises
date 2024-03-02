@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from coded_solutions.max_counters import solution_2, solution_1
+from coded_solutions.countingElements.max_counters import solution_2, solution_1
 
 
 class TestMaxCounters(TestCase):

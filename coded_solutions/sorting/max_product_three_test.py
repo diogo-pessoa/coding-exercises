@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from coded_solutions.max_product_three import solution
+from coded_solutions.sorting.max_product_three import solution
 
 
 class TestMaxProductThree(TestCase):

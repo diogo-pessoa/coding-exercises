@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from coded_solutions.perm_check import solution_improvement, solution_improvement
+from coded_solutions.countingElements.perm_check import solution_improvement
 
 
 class TestPermCheck(TestCase):

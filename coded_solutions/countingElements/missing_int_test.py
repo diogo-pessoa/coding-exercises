@@ -1,7 +1,6 @@
-from random import random, randint
 from unittest import TestCase
 
-from coded_solutions.missing_int import solution_1
+from coded_solutions.countingElements.missing_int import solution_1
 
 
 class TestMaxCounters(TestCase):
