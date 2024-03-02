@@ -37,8 +37,30 @@ def solution_1(A: list[int]) -> int:
         if dp[s]:
             return s
 
-# # Example usage:
-# A = [1, 5, 2, -2]
-# print(min_abs_sum(A))  # Should return 0
-#
-# return val
+
+def min_abs_sum(A):
+    # Convert A to its absolute values since the signs are to be determined
+    A = [abs(a) for a in A]
+
+    # Maximum possible sum of absolute values
+    sum_max = sum(A)
+
+    # DP initialization: reachable tells if a specific sum is reachable
+    reachable = [False] * (sum_max + 1)
+    reachable[0] = True  # Zero is always reachable
+
+    for a in A:
+        next_reachable = reachable[:]
+        for s in range(sum_max + 1):
+            if reachable[s]:
+                if s + a <= sum_max:
+                    next_reachable[s + a] = True
+                if abs(s - a) >= 0:
+                    next_reachable[abs(s - a)] = True
+        reachable = next_reachable
+
+    # The minimum absolute sum achievable is the smallest s where reachable[
+    # s] is True
+    for s in range(sum_max + 1):
+        if reachable[s]:
+            return s
