@@ -27,7 +27,8 @@ configuration = "0002f7c22e7904|000176a3a4d214|000205d29f4a4b"
     """
 
     def test_ordered_config(self):
-        self.assertEqual(ordered_configuration("0001LAJ5KBX9H8|0003UKURNK403F|0002MO6K1Z9WFA|0004OWRXZFMS"),
+        test_configuration = "0001LAJ5KBX9H8|0003UKURNK403F|0002MO6K1Z9WFA|0004OWRXZFMS"
+        self.assertEqual(ordered_configuration(test_configuration),
                          ["LAJ5KBX9H8"
                              , "MO6K1Z9WFA"
                              , "UKURNK403F"
@@ -41,5 +42,17 @@ configuration = "0002f7c22e7904|000176a3a4d214|000205d29f4a4b"
              "QPTSPPOGBI", "YIXJNNF0XQ", "TUOZLNHVS2", "CQAZ9Q2X8H", "UZX01ZTYT1", "MA06JJVAUI"])
 
     def test_invalid_config(self):
+        self.assertEqual(ordered_configuration("0002f7c22e7904|000176a3a4d214|000205d29f4a4b"),
+                         ["Invalid configuration"])
+
+    def test_invalid_config_2(self):
+        self.assertEqual(ordered_configuration("0002f7c22e7904|000176a3a4d214|000205d29f4a4b"),
+                         ["Invalid configuration"])
+
+    def test_ordered_config(self):
+        self.assertEqual(ordered_configuration("0002f7c22e7904|000176a3a4d214|000305d29f4a4b"),
+                         ["76a3a4d214", "f7c22e7904", "05d29f4a4b"])
+
+    def test_ordered_config_2(self):
         self.assertEqual(ordered_configuration("0002f7c22e7904|000176a3a4d214|000205d29f4a4b"),
                          ["Invalid configuration"])
