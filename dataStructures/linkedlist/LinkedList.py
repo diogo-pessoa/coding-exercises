@@ -22,13 +22,62 @@ class LinkedList:
         self.tail = new_node
         self.length = 1
 
-    def prepend(self, data):
+    def append(self, data):
         """
-        Adding a new node to the beginning of the LL
+        Add value to end of LL.
+        - Need to update last element (tail)
+        - bump the length
+        - update former tail to have .next as new tail.
+
         :param data:
         :return:
         """
-        pass
+
+        new_node = Node(data)
+        if not self.head:  # if list is empty.
+            self.head = new_node
+            self.tail = new_node
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
+        self.length += 1
+        return self.tail
+
+    def prepend(self, data):
+        """
+        Adding a new node to the beginning of the LL
+        - move head data to new node
+        - set next value to former head
+        - increment the length of the ll
+        :param data:
+        :return: node: Node
+        """
+        new_node = Node(data)
+        if not self.head:  # if list is empty.
+            self.head = new_node
+            self.tail = new_node
+
+        node = Node(data)
+        node.next = self.head.data
+        self.head = node
+        self.length += 1
+        return node
+
+    def pop(self):
+        """
+        Update new tail by checking if .next in element is current self.tail.
+        :return:
+        """
+        if not self.head or self.length <= 1:
+            self.head = self.tail = None
+            self.length = 0
+        else:
+            new_tail = self.head
+            while new_tail.next is not self.tail:
+                new_tail = new_tail.next
+            self.tail = new_tail
+            self.tail.next = None
+        return self.tail
 
     def print_list(self):
         """
