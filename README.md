@@ -14,4 +14,13 @@ Python solutions to coding exercises from various coding preparations for interv
 * [LeetCode](https://leetcode.com/)
   * [addtwonumbers](leetCode/addtwonumbers)
 * [dataStructures](dataStructures)
-  * [Linked Lists](dataStructures/linkedlist)
+  * [LinkedLists](dataStructures/linkedlist)
+  * [Doublylinkedlist](dataStructures/doublylinkedlist)
+  * [Stack](dataStructures/stack)
+  * [Queue](dataStructures/queue)
+  * [Hash Tables](dataStructures/hash)
+  * [BinarySearchTree.py](dataStructures/tree/BinarySearchTree.py)
+  * [Graphs](dataStructures/graph)
+  * [Heaps](dataStructures/heap)
+  
+  
