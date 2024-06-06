@@ -97,3 +97,18 @@ class TestLinkedList(TestCase):
         self.assertEqual(linked_list.get_by_index(0).data, 4)
         self.assertEqual(linked_list.get_by_index(1).data, 2)
         self.assertEqual(linked_list.get_by_index(2).data, 3)
+
+    def test_find_middle_node(self):
+        my_linked_list = LinkedList(1)
+        my_linked_list.append(2)
+        my_linked_list.append(3)
+        my_linked_list.append(4)
+        my_linked_list.append(5)
+        self.assertEqual(my_linked_list.find_middle_node().data, 3)
+
+    def test_find_middle_node_even_number(self):
+        my_linked_list = LinkedList(1)
+        my_linked_list.append(2)
+        my_linked_list.append(3)
+        my_linked_list.append(4)
+        self.assertEqual(my_linked_list.find_middle_node().data, 3)

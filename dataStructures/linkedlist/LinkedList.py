@@ -207,3 +207,19 @@ class LinkedList:
         while node is not None:
             print(node.data)
             node = node.next
+
+    def find_middle_node(self):
+        """
+        without using the length of the linked list
+        Since the exercise asked to avoid the length of the linked list,
+        I added the counter count_len to check if even to return the first element of second half as problem stated.
+        :return:
+        """
+        slow_pointer = self.head
+        fast_pointer = self.head
+        count_len = 0
+        while fast_pointer.next and fast_pointer.next.next:
+            slow_pointer = slow_pointer.next
+            fast_pointer = fast_pointer.next.next
+            count_len += 1
+        return slow_pointer if count_len % 2 == 0 else slow_pointer.next
