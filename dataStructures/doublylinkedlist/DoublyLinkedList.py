@@ -98,6 +98,60 @@ class DoublyLinkedList:
             for i in range(self.size - 1, index, -1):
                 node = node.prev
         return node
+
+    def set_value_at_index(self, index, data):
+        """
+        O(n)
+        :param index:
+        :param data:
+        :return:
+        """
+        node = self.get_node(index) # O(n)
+        if node:
+            node.data = data
+            return True
+        return False
+
+    def insert_new_node(self, data, index):
+        """
+        O(n)
+        :param data:
+        :param index:
+        :return:
+        """
+        if index < 0 or index >= self.size:
+            return False
+        if index == 0:
+            return self.prepend(data)
+        if index == self.size:
+            return self.append(data)
+        current_node = self.get_node(index - 1)
+        new_node = Node(data)
+        new_node.next = current_node.next
+        new_node.prev = current_node
+        current_node.next.prev = new_node
+        current_node.next = new_node
+        self.size += 1
+        return True
+
+    def remove_node(self, index):
+        """
+        O(n)
+        :param index:
+        :return:
+        """
+        if index < 0 or index >= self.size:
+            return False
+        if index == 0:
+            return self.pop_first()
+        if index == self.size - 1:
+            return self.pop()
+        node = self.get_node(index)
+        node.prev.next = node.next
+        node.next.prev = node.prev
+        self.size -= 1
+        return True
+
     def __str__(self):
         """
         O(n)

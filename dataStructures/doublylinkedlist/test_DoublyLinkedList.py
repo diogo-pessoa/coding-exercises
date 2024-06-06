@@ -78,3 +78,33 @@ class TestDoublyLinkedList(TestCase):
         self.assertEqual(d_linked_list.get_node(2).data, 30)
         self.assertEqual(d_linked_list.get_node(0).data, 10)
         self.assertEqual(d_linked_list.get_node(3), None)
+
+    def test_set_value_at_index(self):
+        d_linked_list = DoublyLinkedList(10)
+        d_linked_list.append(20)
+        d_linked_list.append(30)
+        d_linked_list.set_value_at_index(1, 25)
+        self.assertEqual(d_linked_list.get_node(1).data, 25)
+        self.assertEqual(d_linked_list.get_node(2).data, 30)
+        self.assertEqual(d_linked_list.get_node(0).data, 10)
+        self.assertEqual(d_linked_list.get_node(3), None)
+
+    def test_insert_new_node(self):
+        d_linked_list = DoublyLinkedList(10)
+        d_linked_list.append(20)
+        d_linked_list.append(30)
+        d_linked_list.insert_new_node(25, 1)
+        self.assertEqual(d_linked_list.get_node(1).data, 25)
+        self.assertEqual(d_linked_list.get_node(2).data, 20)
+        self.assertEqual(d_linked_list.get_node(3).data, 30)
+        self.assertEqual(d_linked_list.get_node(0).data, 10)
+        self.assertEqual(d_linked_list.get_node(4), None)
+
+    def test_remove_node(self):
+        d_linked_list = DoublyLinkedList(10)
+        d_linked_list.append(20)
+        d_linked_list.append(30)
+        d_linked_list.remove_node(1)
+        self.assertEqual(d_linked_list.get_node(1).data, 30)
+        self.assertEqual(d_linked_list.get_node(0).data, 10)
+        self.assertEqual(d_linked_list.get_node(2), None)
