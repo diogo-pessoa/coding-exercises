@@ -1,6 +1,8 @@
 class GraphAdMatrix:
     def __init__(self, num_cannon_events):
         self.num_cannon_events = num_cannon_events
+        # Initialise the matrix with a list comprehension to create a 2D list(Matrix)
+        # of zeroes
         self.multiverse = [[0 for _ in range(num_cannon_events)] for _ in
                            range(num_cannon_events)]
 
