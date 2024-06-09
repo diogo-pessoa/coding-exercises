@@ -18,7 +18,7 @@ Python solutions to coding exercises from various coding preparations for interv
   * [Doublylinkedlist](dataStructures/doublylinkedlist)
   * [Stack](dataStructures/stack)
   * [Queue](dataStructures/queue)
-  * [Hash Tables](dataStructures/hash)
+  * [Hash Tables](dataStructures/hash_table)
   * [BinarySearchTree.py](dataStructures/tree/BinarySearchTree.py)
   * [Graphs](dataStructures/graph)
   * [Heaps](dataStructures/heap)
