@@ -14,11 +14,11 @@ class TwoSum:
             Each lookup in the table costs only O(1) time.
 
         Space complexity: O(n).
-        The extra space required depends on the number of items stored in the hash table,
+        The extra space required depends on the number of items stored in the hash_table table,
         which stores at most n elements.
 
         """
-        num_dict = {}  # Search in a hash table is O(1) compared to O(n) in a list. Trade-off is space complexity
+        num_dict = {}  # Search in a hash_table table is O(1) compared to O(n) in a list. Trade-off is space complexity
 
         for i in range(len(nums)):
             deficit = target - nums[i]

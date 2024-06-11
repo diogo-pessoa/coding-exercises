@@ -1,14 +1,16 @@
+from helpers.TimeItDecorator import timeit_decorator
+
+
 class PalindromeInts:
 
     @staticmethod
-    def is_palindrome(x: int) -> bool:
-        if x < 0:
-            return False
-        x = str(x)
-        return x == x[::-1]
-
-    @staticmethod
-    def is_palindrome_no_str(x: int) -> bool:
+    @timeit_decorator
+    def is_palindrome_int(x: int) -> bool:
+        """
+        This was slower in practice
+        :param x:
+        :return:
+        """
         if x and x < 0:
             # If negative, the minus sign breaks palindrome property
             return False
@@ -29,3 +31,27 @@ class PalindromeInts:
         # is equal to the original number divided by 10
 
         return x == reversed_num or x == reversed_num // 10
+
+    @staticmethod
+    @timeit_decorator
+    def is_palindrome_str(x: int) -> bool:
+        if x < 0:
+            return False
+        return str(x) == str(x)[::-1]
+
+    @staticmethod
+    @timeit_decorator
+    def is_palindrome_x_declared(x: int) -> bool:
+        if x < 0:
+            return False
+        x = str(x)
+        return x == x[::-1]
+
+    def make_palindrome(self, number: int) -> int:
+        """
+        Making my own palindrome, to benchmark my solutions
+        :return:
+        """
+        s = str(number)
+        palindrome = s + s[::-1]
+        return int(palindrome)
