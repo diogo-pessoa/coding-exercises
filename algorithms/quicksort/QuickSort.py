@@ -5,7 +5,7 @@ class QuickSort:
     """
     Divide and conquer algorithm. It picks an element as pivot and partitions the
     given array around the picked pivot.
-    Pivot - function
+
     """
 
     def _pivot_by_first_element(self, partition, pivot_index, end_index):
