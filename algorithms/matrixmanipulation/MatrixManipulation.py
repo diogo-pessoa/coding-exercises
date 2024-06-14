@@ -1,3 +1,3 @@
 
-class Matrix:
+class MatrixManipulation:
     pass
