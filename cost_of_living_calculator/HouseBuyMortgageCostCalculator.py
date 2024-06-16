@@ -8,7 +8,8 @@ class HouseBuyMortgageCostCalculator:
 
     def __init__(self, house_price, mortgage_renegotiation_fee, house_buy_other_costs,
                  renovation_costs, admin_fees_per_year, number_of_years_repaid,
-                 vlt_cost_per_year):
+                 vlt_cost_per_year, monthly_repayment):
+        self.monthly_repayment = monthly_repayment
         self.mortgage_calc = MortgageCalculator(house_price)
 
         # Calculate the number of months paid
@@ -25,27 +26,29 @@ class HouseBuyMortgageCostCalculator:
                                                             'admin_fees', 'vlt',
                                                             'diluted_lump_sum',
                                                             'mortgage_renegotiation_fee',
-                                                            'total'])
+                                                            'down_payment', 'total'])
         # Load table with cost_per_month and totals
-        self.load_table_cost_per_month()
-        self.total_cost_per_month()
+        self._load_table_cost_per_month()
+        self._calculate_total_cost_per_month()
 
-    def load_table_cost_per_month(self):
+    def _load_table_cost_per_month(self):
         for i in self.period_in_months:
             self.table_of_monthly_costs.loc[
-                i, 'mortgage'] = self.mortgage_calc.get_monthly_payment()
+                i, 'mortgage'] = self.monthly_repayment
             self.table_of_monthly_costs.loc[i, 'renovation'] = (
                     self.renovation_costs / self.months_repaid)
             self.table_of_monthly_costs.loc[
-                i, 'vlt'] = self.vlt_cost / self.months_repaid
+                i, 'vlt'] = self.vlt_cost_living_years / self.months_repaid
             self.table_of_monthly_costs.loc[
-                i, 'admin_fees'] = self.admin_fees / self.months_repaid
+                i, 'admin_fees'] = self.admin_fees_living_years / self.months_repaid
             self.table_of_monthly_costs.loc[
-                i, 'diluted_lump_sum'] = self.upfront_pay / self.months_repaid
+                i, 'diluted_lump_sum'] = self.home_buy_other_costs / self.months_repaid
             self.table_of_monthly_costs.loc[i, 'mortgage_renegotiation_fee'] = (
                     self.mortgage_renegotiation_fee / self.months_repaid)
+            self.table_of_monthly_costs.loc[i, 'down_payment'] = (
+                    self.mortgage_calc.down_payment / self.months_repaid)
 
-    def total_cost_per_month(self):
+    def _calculate_total_cost_per_month(self):
         """
         spreading the down payment over the number of months and mortgage
         renegotiation fees.
@@ -53,19 +56,20 @@ class HouseBuyMortgageCostCalculator:
         """
         self.table_of_monthly_costs['total'] = (
                 self.table_of_monthly_costs['mortgage'] + self.table_of_monthly_costs[
-            'renovation'] + self.table_of_monthly_costs['vlt'] +
-                self.table_of_monthly_costs['admin_fees'] + self.table_of_monthly_costs[
+            'renovation'] + self.table_of_monthly_costs['admin_fees'] +
+                self.table_of_monthly_costs['vlt'] + self.table_of_monthly_costs[
                     'diluted_lump_sum'] + self.table_of_monthly_costs[
-                    'mortgage_renegotiation_fee'])
+                    'mortgage_renegotiation_fee'] + self.table_of_monthly_costs[
+                    'down_payment'])
 
     def get_total_cost_per_year(self):
         """
         just an yearly view of the total cost
         :return:
         """
-        return round(self.table_of_monthly_costs['total'][:12].sum())
+        return round(self.table_of_monthly_costs['total'].max() * 12)
 
-    def get_total_cost(self):
+    def get_total_cost_living_in_mortgage(self):
         """
         Get the total cost of the mortgage
         :return:
@@ -107,71 +111,6 @@ class HouseBuyMortgageCostCalculator:
         plt.legend(['Total cost', 'Total cost over 60 months'])
         plt.title('Total investment over 5 years')
         plt.show()
-
-    def debt_left_after_years(self, paid_years=5):
-        """
-        Calculate the debt left after a certain number of years
-        for the sake of simplicity I'll assume a fixed interest rate (and ignore
-        inflation)
-        :param paid_years: number of years paid
-        :return:
-        """
-        monthly_fee = self.mortgage_monthly  # rate_per_annum = self.mortgage_interest
-        # / 12 # 2.6% annual interest rate (fixed)
-        mortgage_period_months = self.mortgage_period_months * 12  # 30 years
-
-        total_debt = mortgage_period_months * monthly_fee
-
-        debt = self.upfront_pay
-        for i in range(paid_years * 12):
-            debt = debt - self.table_of_monthly_costs.loc[i, 'mortgage']
-        return debt
-
-    def get_monthly_payment(self):
-        """
-        Calculate the monthly mortgage payment.
-        :return: Monthly mortgage payment.
-        """
-        # Convert annual rate to monthly and to decimal
-        monthly_rate = self.mortgage_interest / 12 / 100
-        loan_amount = self.loan_amount
-        repayment_period = self.mortgage_period_months
-
-        # Calculate monthly payment using the annuity formula
-        monthly_payment = (loan_amount * monthly_rate) / (
-                1 - (1 + monthly_rate) ** -repayment_period)
-
-        return monthly_payment
-
-    def get_total_lent(self):
-        """
-        Calculate the total mortgage value (principal + interest).
-        :return: Total amount lent over the mortgage period.
-        """
-        monthly_payment = self.get_monthly_payment()
-        total_payment = monthly_payment * self.mortgage_period_months
-        return total_payment
-
-    def get_total_interest(self):
-        """
-        Calculate the total interest paid over the mortgage period.
-        :return: Total interest paid.
-        """
-        monthly_payment = self.get_monthly_payment()
-        total_payment = monthly_payment * self.mortgage_period_months
-        total_interest = total_payment - self.loan_amount
-
-        return total_interest
-
-    def get_total_repayable(self):
-        """
-        Calculate the total amount repayable over the mortgage period.
-        :return: Total amount repayable.
-        """
-        total_interest = self.get_total_interest()
-        total_repayable = self.loan_amount + total_interest
-
-        return total_repayable
 
     def __str__(self):
         return self.table_of_monthly_costs.to_string()

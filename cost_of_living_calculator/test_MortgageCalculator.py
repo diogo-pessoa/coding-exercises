@@ -42,3 +42,6 @@ class TestMortgageCalculator(TestCase):
         print(f"Interest rate cost monthly: "
               f"{self.mortgage_cost.get_interest_rate_cost_monthly()}")
         self.assertEqual(614, self.mortgage_cost.get_interest_rate_cost_monthly())
+
+    def test_debt_left_after_paid_years(self):
+        self.assertEqual(self.mortgage_cost.get_debt_left_after_years(5), 287460)

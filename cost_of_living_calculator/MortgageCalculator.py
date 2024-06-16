@@ -29,6 +29,9 @@ class MortgageCalculator:
 
         return round(monthly_payment)
 
+    def get_down_payment(self):
+        return self.down_payment
+
     def get_total_lent(self):
         """
         Calculate the total mortgage value (principal + interest).
@@ -81,3 +84,18 @@ class MortgageCalculator:
         :return: Interest rate cost monthly.
         """
         return round(self.get_monthly_payment() - self.get_monthly_rate_charge())
+
+    def get_debt_left_after_years(self, years_repaid: int):
+        """
+        Calculate the debt left after a certain number of years
+        for the sake of simplicity I'll assume a fixed interest rate (and ignore
+        inflation) - see MortgageCalculator for more details.
+        :param years_repaid: number of years paid
+        :return:
+        """
+        paid_years = years_repaid * 12
+        monthly_payment = self.get_monthly_payment()
+        monthly_charged_interest = self.get_interest_rate_cost_monthly()
+        total_paid = (monthly_payment - monthly_charged_interest) * paid_years
+        debt_left = self.loan_amount - total_paid
+        return debt_left
