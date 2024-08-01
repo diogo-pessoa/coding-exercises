@@ -13,6 +13,12 @@ def check_blocks(K: int, max_block_sum: int, A: list[int]) -> int:
 
 
 def optimal_large_sum(A, K):
+    """
+     [Revised] - Quick sort Medians of three
+    :param A:
+    :param K:
+    :return:
+    """
     lower_bound = max(A)  # No block sum can be less than the largest element.
     upper_bound = sum(
         A)  # No block sum can be more than the sum of all elements.

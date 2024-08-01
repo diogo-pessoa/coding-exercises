@@ -8,8 +8,9 @@ class TestMortgageCalculator(TestCase):
     def setUp(self):
         print(f"Running test: {self._testMethodName}")
 
-        house_price = 365_000
+        house_price = 365000
         self.mortgage_cost = MortgageCalculator(house_price)
+        self.mortgage_cost.subtract_early_repayment(30000)
 
     def test_get_monthly_payment(self):
         print(f"monthly repayment: {self.mortgage_cost.get_monthly_payment()}")
@@ -44,4 +45,4 @@ class TestMortgageCalculator(TestCase):
         self.assertEqual(614, self.mortgage_cost.get_interest_rate_cost_monthly())
 
     def test_debt_left_after_paid_years(self):
-        self.assertEqual(self.mortgage_cost.get_debt_left_after_years(5), 287460)
+        self.assertEqual(self.mortgage_cost.get_debt_left_after_years(5), 279234)

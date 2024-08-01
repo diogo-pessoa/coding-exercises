@@ -1,6 +1,6 @@
 class Matrix:
 
-    def __init__(self, data):
+    def __init__(self, data: list):
         self.data = data
         self.rows = len(data)
         self.columns = len(data[0])

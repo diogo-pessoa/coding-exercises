@@ -5,8 +5,7 @@ class MortgageCalculator:
     charges and reduce to total debt to understand the compound interest effect.
     """
 
-    def __init__(self, house_price, mortgage_period_months=360, mortgage_interest=2.5,
-                 down_payment_percentage=0.10):
+    def __init__(self, house_price, mortgage_period_months=360, mortgage_interest=2.5, down_payment_percentage=0.10):
         self.down_payment = house_price * down_payment_percentage
         self.mortgage_period_months = mortgage_period_months
         self.mortgage_interest = mortgage_interest  # 2.6% annual interest rate (fixed)
@@ -14,6 +13,15 @@ class MortgageCalculator:
         self.mortgage_interest = self.mortgage_interest
         self.loan_amount = house_price - self.down_payment
         self.mortgage_monthly = self.get_monthly_payment()
+
+    def subtract_early_repayment(self, amount: int):
+        """
+        Subtract an early repayment from the mortgage.
+        :param amount: Amount to repay early.
+        :return: New mortgage amount.
+        """
+        self.loan_amount -= amount
+        return self.loan_amount
 
     def get_monthly_payment(self):
         """

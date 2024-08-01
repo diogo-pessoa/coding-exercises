@@ -4,17 +4,17 @@ from cost_of_living_calculator.MortgageCalculator import MortgageCalculator
 
 
 class HouseBuyScenario:
-    @staticmethod
     def __main__(self):
         house_buy_price = 365_000
         mort_renegotiation_fee = 3_600
         house_buy_other_costs = 7_000
-        completed_repayment_years = 5
+        completed_repayment_years = 15
         renovation_costs = 75_000
         sale_price = 470_000
         admin_fees = 1_100
         vlt_cost_per_year = 487
         self.mortgage_calc = MortgageCalculator(house_buy_price)
+        self.mortgage_calc.subtract_early_repayment(40_000)
         self.house_sale = HouseSale(sale_price, 0.01, 5000)
 
         self.cost_of_living = HouseBuyMortgageCostCalculator(house_buy_price, mort_renegotiation_fee,
