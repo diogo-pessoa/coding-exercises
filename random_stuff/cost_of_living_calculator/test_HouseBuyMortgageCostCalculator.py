@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from cost_of_living_calculator.HouseBuyMortgageCostCalculator import HouseBuyMortgageCostCalculator
+from random_stuff.cost_of_living_calculator.HouseBuyMortgageCostCalculator import HouseBuyMortgageCostCalculator
 
 
 class TestMortgageCost(TestCase):

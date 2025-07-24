@@ -1,6 +1,6 @@
-from cost_of_living_calculator.HouseBuyMortgageCostCalculator import HouseBuyMortgageCostCalculator
-from cost_of_living_calculator.HouseSale import HouseSale
-from cost_of_living_calculator.MortgageCalculator import MortgageCalculator
+from random_stuff.cost_of_living_calculator.HouseBuyMortgageCostCalculator import HouseBuyMortgageCostCalculator
+from random_stuff.cost_of_living_calculator.HouseSale import HouseSale
+from random_stuff.cost_of_living_calculator.MortgageCalculator import MortgageCalculator
 
 
 class HouseBuyScenario:

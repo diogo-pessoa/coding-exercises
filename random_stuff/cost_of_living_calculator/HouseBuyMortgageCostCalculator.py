@@ -1,7 +1,7 @@
 import pandas as pd
 from matplotlib import pyplot as plt
 
-from cost_of_living_calculator.MortgageCalculator import MortgageCalculator
+from random_stuff.cost_of_living_calculator.MortgageCalculator import MortgageCalculator
 
 
 class HouseBuyMortgageCostCalculator:

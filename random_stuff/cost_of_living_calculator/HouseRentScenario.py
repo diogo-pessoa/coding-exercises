@@ -1,5 +1,5 @@
-from cost_of_living_calculator.HouseRent import HouseRent
-from cost_of_living_calculator.PassiveInvestmentCalc import PassiveInvestmentCalc
+from random_stuff.cost_of_living_calculator.HouseRent import HouseRent
+from random_stuff.cost_of_living_calculator.PassiveInvestmentCalc import PassiveInvestmentCalc
 
 
 class HouseRentScenario:

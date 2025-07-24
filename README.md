@@ -1,15 +1,11 @@
 Code exercises for interviews
 ---
 
-Python solutions to coding exercises from various coding preparations for interviews
-
-My notes on solutions, code exercises and theory. Collected while writing the code stored here. 
-* [diogo-pessoa Notes](https://diogo-pessoa.github.io/)
-
+Python exercises from various coding preparations for interviews and other random stuff
 
 ### version
 
-* `python3.11` - [python3.11](https://www.python.org/downloads/release/python-3110/)
+* `python > 3.11` - [python3.11](https://www.python.org/downloads/release/python-3110/)
   * Using Optionals in a few coding exercises, which wasn't available until python3.10.
 
 ### coding exercises

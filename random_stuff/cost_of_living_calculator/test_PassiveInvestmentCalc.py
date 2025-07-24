@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from cost_of_living_calculator.PassiveInvestmentCalc import PassiveInvestmentCalc
+from random_stuff.cost_of_living_calculator.PassiveInvestmentCalc import PassiveInvestmentCalc
 
 
 class TestPassiveInvestmentCalc(TestCase):

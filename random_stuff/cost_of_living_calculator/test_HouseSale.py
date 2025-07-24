@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from cost_of_living_calculator.HouseSale import HouseSale
+from random_stuff.cost_of_living_calculator.HouseSale import HouseSale
 
 
 class TestHouseSale(TestCase):
