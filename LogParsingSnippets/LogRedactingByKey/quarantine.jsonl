@@ -1,0 +1,4 @@
+{"ts": "2026-01-27T10:02:00Z", "service": "s3", "message": "missing region", "token": "[REDACTED_TOKEN]"}
+{"ts": "2026-01-27T10:01:00Z", "region": "us-east-1", "service": "ec2", "message": "start", "account_id": "[REDACTED_ACCOUNT]"}
+{"ts": "2026-01-27T10:01:00Z", "region": "us-east-1", "service": "ec2", "message": "start", "account_id": "[REDACTED_ACCOUNT]"}
+{"ts": "2026-01-27T10:02:00Z", "service": "s3", "message": "missing region", "token": "[REDACTED_TOKEN]"}

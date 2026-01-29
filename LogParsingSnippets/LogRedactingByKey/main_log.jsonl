@@ -1,0 +1,4 @@
+{"ts":"2026-01-27T10:00:00Z","region":"eu-west-1","service":"kms","message":"ok","meta":{"ip":"1.2.3.4","email":"a@b.com"}}
+{"ts":"2026-01-27T10:01:00Z","region":"us-east-1","service":"ec2","message":"start","account_id":"123456789012"}
+not-json
+{"ts":"2026-01-27T10:02:00Z","service":"s3","message":"missing region","token":"abc"}
